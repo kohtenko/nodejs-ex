@@ -68,7 +68,7 @@ function saveJSON (object) {
 function objectForItemId (item_id) {
 	var json = getJSON();
 	var filterred = json.filter(function(object) {
-  		return object["item_id"] == object[item_id]
+  		return object["item_id"] == item_id
 	})
 	return filterred[0];
 }
