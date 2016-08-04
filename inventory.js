@@ -105,6 +105,14 @@ function objectForItemId (item_id) {
 }
 
 function addOrUpdateObject (object) {
-	
+	var savedObject = objectForItemId(object["item_id"]);
+	if (savedObject != null) {
+		savedObject["item_id"] = object["item_id"];
+		savedObject["tennan_id"] = object["tennan_id"];
+		savedObject["count"] = object["count"];
+	} else {
+		globalJSON.push(object);
+	}
+	saveJSON(globalJSON);
 }
 

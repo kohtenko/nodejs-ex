@@ -45,21 +45,20 @@ http.createServer( function (request, response) {
 
          case "/scan" :
             console.log('add_item');
+            
             var fullBody = '';
+            var responseBody = 'some data';
+            response.on('data', function(chunk) {
+               fullBody += chunk
+               response.write(responseBody);
+            });
+
             request.on('data', function(chunk) {
                fullBody += chunk
+               responseBody = get_all.addOrUpdateObject(fullBody);
+               
             });
 
-            request.on('end', function() {
-               var decodedBody = querystring.parse(fullBody);
-               console.log(decodedBody);
-               console.log(decodedBody["item_id"]);
-               console.log('create server');
-
-               // response.end();
-            });
-            
-            // response.write(get_all.add_item(request.params["item_id"], request.params["count"], request.params["tennant_id"]));
 
       }
       response.end();
