@@ -14,13 +14,33 @@ http.createServer( function (request, response) {
             response.write(get_all.get_all());
 
             break;
+
+         case "/init_db":
+            console.log('init_db');
+            get_all.init_db();
+
+            break;   
          case "/test" :
             console.log('test');
             break;
 
          case "/order" :
             console.log('order');
-            response.write(order.order());
+
+            
+            var fullBody = '';
+            var responseBody = 'some data';
+            response.on('data', function(chunk) {
+               fullBody += chunk
+               response.write(responseBody);
+            });
+
+            request.on('data', function(chunk) {
+               fullBody += chunk
+               responseBody = order.order(fullBody);
+               
+            });
+
             break;   
 
          case "/scan" :

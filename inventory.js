@@ -10,6 +10,11 @@ module.exports = {
 
 	add_item: function(item_id, count, tennant_id) {
 		console.log( objectForItemId(object["item_id"]));
+	},
+
+	init_db: function() {
+		console.log('init_db');
+		initInventoryJSON();
 	}	
 }
 
@@ -32,7 +37,29 @@ function getJSON () {
 	return obj
 }
 
+function initInventoryJSON() {
+    var inventory = [
+        {"item_id":0,"count":2,"description":"Mario",
+        "image":"http://www.mariowiki.com/images/thumb/6/62/Mario_Paper.jpg/180px-Mario_Paper.jpg"},
+        
+       {"item_id":1,"count":21,"description":"Mario",
+        "image":"http://www.mariowiki.com/images/thumb/6/62/Mario_Paper.jpg/180px-Mario_Paper.jpg"},
+
+		{"item_id":3,"count":22,"description":"Mario",
+        "image":"http://www.mariowiki.com/images/thumb/6/62/Mario_Paper.jpg/180px-Mario_Paper.jpg"}
+		
+		
+		]
+
+		var body = JSON.stringify(inventory);
+    console.log('initInventoryJSON');
+	console.log(body);
+
+	saveJSON(inventory);
+}
+
 function saveJSON (object) {
+	console.log('saveJSON');
 	var file = '/tmp/data.json';
 	jsonfile.writeFileSync(file, object);
 	console.log("saved"); 			
