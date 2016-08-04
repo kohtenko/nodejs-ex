@@ -6,9 +6,12 @@ module.exports = {
 		var str = JSON.stringify(getJSON());
 	    console.log(str);
 		return str;
+	},
+
+	add_item: function(item_id, count, tennant_id) {
+		console.log( objectForItemId(object["item_id"]));
 	}	
 }
-
 
 function saveEmptyJSON () {
 	var file = '/tmp/data.json';
@@ -34,3 +37,16 @@ function saveJSON (object) {
 	jsonfile.writeFileSync(file, object);
 	console.log("saved"); 			
 }
+
+function objectForItemId (item_id) {
+	var json = getJSON();
+	var filterred = json.filter(function(object) {
+  		return object["item_id"] == object[item_id]
+	})
+	return filterred[0];
+}
+
+function addOrUpdateObject (object) {
+	
+}
+
