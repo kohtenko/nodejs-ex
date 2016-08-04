@@ -29,11 +29,12 @@ http.createServer( function (request, response) {
                console.log(decodedBody["item_id"]);
                console.log('create server');
 
-               response.end();
+               // response.end();
             });
             
             // response.write(get_all.add_item(request.params["item_id"], request.params["count"], request.params["tennant_id"]));
       }
+      response.end();
 }).listen(8080);
 
 console.log('Server running at http://127.0.0.1:8080/');
