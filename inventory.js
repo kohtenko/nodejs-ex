@@ -15,8 +15,38 @@ module.exports = {
 	init_db: function() {
 		console.log('init_db');
 		initInventoryJSON();
+	},
+
+	order: function(jsonstr) {
+		 console.log('order.js params strinf: ');
+        console.log(jsonstr);
+		
+		var orderRequest = JSON.parse(jsonstr);
+
+		console.log('orderRequest json:');
+		console.log(orderRequest);
+
+		console.log('orderRequest.item_id = ');
+
+		console.log(orderRequest.item_id)
+
+		var inventory = objectForItemId(orderRequest.item_id);
+
+		if(inventory != null) {
+
+		console.log('objectForItemId json:');
+		console.log(inventory);
+		
+		inventory.count--;
+
+		addOrUpdateObject(inventory);
+	}
+
+		// return str;
 	}	
 }
+
+
 
 function saveEmptyJSON () {
 	var file = '/tmp/data.json';
