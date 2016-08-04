@@ -1,6 +1,7 @@
 // var json = require('./json.js');
 var jsonfile = require('jsonfile');
 var globalJSON = null;
+var filePath = "data.json"
 
 module.exports = {
 	get_all: function() {
@@ -53,17 +54,15 @@ module.exports = {
 
 
 function saveEmptyJSON () {
-	var file = '/tmp/data.json';
 	obj = {};
-	jsonfile.writeFileSync(file, obj);
+	jsonfile.writeFileSync(filePath, obj);
 	console.log("created"); 			
 }
 
 function getJSON () {
-	var file = '/tmp/data.json';
 	var obj = null;
 	try {
-   		obj = jsonfile.readFileSync(file)
+   		obj = jsonfile.readFileSync(filePath)
 		} catch (ex) {
 			saveEmptyJSON()
 			obj = {}
@@ -95,8 +94,7 @@ function initInventoryJSON() {
 
 function saveJSON (object) {
 	console.log('saveJSON');
-	var file = '/tmp/data.json';
-	jsonfile.writeFileSync(file, object);
+	jsonfile.writeFileSync(filePath, object);
 	console.log("saved"); 			
 }
 
