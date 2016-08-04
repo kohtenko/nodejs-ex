@@ -38,7 +38,7 @@ module.exports = {
 			console.log('objectForItemId json:');
 			console.log(inventory);
 
-			inventory.count--;
+			inventory.count -= orderRequest.count;
 			saveJSON(globalJSON);
 	}
 
