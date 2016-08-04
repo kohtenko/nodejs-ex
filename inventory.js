@@ -54,21 +54,22 @@ module.exports = {
 
 
 function saveEmptyJSON () {
-	obj = {};
-	jsonfile.writeFileSync(filePath, obj);
-	console.log("created"); 			
+	// obj = {};
+	// jsonfile.writeFileSync(filePath, obj);
+	// console.log("created"); 			
 }
 
 function getJSON () {
-	var obj = null;
-	try {
-   		obj = jsonfile.readFileSync(filePath)
-		} catch (ex) {
-			saveEmptyJSON()
-			obj = {}
-		}
-	globalJSON = obj;
-	return obj
+	return globalJSON;
+	// var obj = null;
+	// try {
+ //   		obj = jsonfile.readFileSync(filePath)
+	// 	} catch (ex) {
+	// 		saveEmptyJSON()
+	// 		obj = {}
+	// 	}
+	// globalJSON = obj;
+	// return obj
 }
 
 function initInventoryJSON() {
@@ -93,9 +94,10 @@ function initInventoryJSON() {
 }
 
 function saveJSON (object) {
-	console.log('saveJSON');
-	jsonfile.writeFileSync(filePath, object);
-	console.log("saved"); 			
+	globalJSON = object;
+	// console.log('saveJSON');
+	// jsonfile.writeFileSync(filePath, object);
+	// console.log("saved"); 			
 }
 
 function objectForItemId (item_id) {
