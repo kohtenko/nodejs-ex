@@ -1,5 +1,6 @@
 // var json = require('./json.js');
 var jsonfile = require('jsonfile');
+var globalJSON = null;
 
 module.exports = {
 	get_all: function() {
@@ -34,12 +35,11 @@ module.exports = {
 
 		if(inventory != null) {
 
-		console.log('objectForItemId json:');
-		console.log(inventory);
-		
-		inventory.count--;
+			console.log('objectForItemId json:');
+			console.log(inventory);
 
-		addOrUpdateObject(inventory);
+			inventory.count--;
+			saveJSON(globalJSON);
 	}
 
 		// return str;
@@ -64,6 +64,7 @@ function getJSON () {
 			saveEmptyJSON()
 			obj = {}
 		}
+	globalJSON = obj;
 	return obj
 }
 
