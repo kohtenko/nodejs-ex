@@ -55,7 +55,7 @@ http.createServer( function (request, response) {
 
             request.on('data', function(chunk) {
                fullBody += chunk
-               responseBody = get_all.addOrUpdateObject(fullBody);
+               responseBody = get_all.scan(fullBody);
                
             });
 

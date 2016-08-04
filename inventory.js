@@ -43,7 +43,11 @@ module.exports = {
 	}
 
 		// return str;
-	}	
+	}	,
+
+	scan: function(json) {
+		addOrUpdateObject(JSON.parse(json));
+	}
 }
 
 
@@ -111,6 +115,11 @@ function addOrUpdateObject (object) {
 		savedObject["tennan_id"] = object["tennan_id"];
 		savedObject["count"] = object["count"];
 	} else {
+		// var {"item_id":0,"count":2,"description":"Mario",
+        // "image":"http://www.mariowiki.com/images/thumb/6/62/Mario_Paper.jpg/180px-Mario_Paper.jpg"}, = {"item_id":0,"count":1,"description":"Mario",
+        // "image":""};
+
+		object["description"] = 'scanned product ' + object.item_id;
 		globalJSON.push(object);
 	}
 	saveJSON(globalJSON);
