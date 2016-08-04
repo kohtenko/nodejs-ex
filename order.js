@@ -11,14 +11,14 @@ module.exports = {
 
 
 function saveEmptyJSON () {
-	var file = '/tmp/order_data.json';
+	var file = '/tmp/data.json';
 	obj = {};
 	jsonfile.writeFileSync(file, obj);
 	console.log("created"); 			
 }
 
 function getJSON () {
-	var file = '/tmp/order_data.json';
+	var file = '/tmp/data.json';
 	var obj = null;
 	try {
    		obj = jsonfile.readFileSync(file)
@@ -29,8 +29,12 @@ function getJSON () {
 	return obj
 }
 
+function initInventoryJSON() {
+    
+}
+
 function saveJSON (object) {
-	var file = '/tmp/order_data.json';
+	var file = '/tmp/data.json';
 	jsonfile.writeFileSync(file, object);
 	console.log("saved"); 			
 }
